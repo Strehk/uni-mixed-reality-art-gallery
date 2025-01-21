@@ -23,15 +23,9 @@
 	import { XR } from '@threlte/xr';
 </script>
 
-<T.PerspectiveCamera
-	makeDefault
-	position={[10, 10, 10]}
-	oncreate={(ref) => {
-		ref.lookAt(0, 1, 0);
-	}}
-/>
-
-<T.Mesh>
-	<T.BoxGeometry />
-	<T.MeshBasicMaterial />
-</T.Mesh>
+<XR>
+	<T.Mesh>
+		<T.BoxGeometry />
+		<T.MeshBasicMaterial />
+	</T.Mesh>
+</XR>
