@@ -5,7 +5,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let btnLoading = false;
+	let btnLoading = $state(false);
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">

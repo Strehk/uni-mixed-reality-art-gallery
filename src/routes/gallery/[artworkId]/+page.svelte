@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { Canvas } from '@threlte/core';
-	import { VRButton } from '@threlte/xr';
+	import { ARButton } from '@threlte/xr';
 	import ArtScene from '$lib/components/ArtScene.svelte';
 	import { browser, building, dev, version } from '$app/environment';
 
@@ -28,12 +28,10 @@
 	</div>
 </div>
 
-<div class="h-full bg-white">
-	<Canvas>
-		<ArtScene />
-	</Canvas>
-	<VRButton />
-</div>
+<Canvas>
+	<ArtScene />
+	<ARButton />
+</Canvas>
 
 <!-- <pre class="w-full">
     {JSON.stringify(data, null, 2)}
