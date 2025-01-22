@@ -29,7 +29,7 @@
 
 <T.AmbientLight position={[-10, 10, 5]} />
 <T.AmbientLight position={[10, 10, 5]} />
-<!-- <XR> -->
+<XR>
 {#await wallTexture then map}
 	<T.Mesh position={[0, wallHeight / 2, -3]} rotation={[0, 0, 0]}>
 		<T.BoxGeometry args={[wallWidth, wallHeight, 0.1]} />
@@ -43,4 +43,4 @@
 		<T.MeshStandardMaterial {map} />
 	</T.Mesh>
 {/await}
-<!-- </XR> -->
+</XR>

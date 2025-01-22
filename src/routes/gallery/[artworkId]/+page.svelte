@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { Canvas } from '@threlte/core';
-	import { ARButton } from '@threlte/xr';
+	import { XRButton } from '@threlte/xr';
 	import ArtScene from '$lib/components/ArtScene.svelte';
 	import { browser, building, dev, version } from '$app/environment';
 
@@ -36,7 +36,7 @@
 			height={artwork.dimensions?.cm.height / 100}
 		/>
 	</Canvas>
-	<ARButton />
+	<XRButton mode="immersive-ar" styled={true} class="btn" />
 </div>
 
 <!-- <pre class="w-full">
