@@ -1,5 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 import { env } from '$env/dynamic/private';
+// @ts-expect-error No Typescript support
 import artsyXapp from '@artsy/xapp';
 
 export const load: LayoutServerLoad = async ({ params }) => {

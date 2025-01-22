@@ -9,10 +9,10 @@ export const load: PageServerLoad = async (event) => {
 	if (searchParam) {
 		const searchUrl = searchParam ? `search?q=${searchParam}&type=artwork` : '';
 
-		let search = await artsyFetch(searchUrl, artsyApiToken);
+		let search = await artsyFetch<any>(searchUrl, artsyApiToken);
 
 		return {
-			art: search._embedded.results.map((art) => ({
+			art: search._embedded.results.map((art: any) => ({
 				id: art._links.self.href.split('/').pop(),
 				title: art.title,
 				description: art.description,
@@ -21,10 +21,10 @@ export const load: PageServerLoad = async (event) => {
 		};
 	}
 
-	let art = await artsyFetch('artworks', artsyApiToken);
+	let art = await artsyFetch<any>('artworks', artsyApiToken);
 
 	return {
-		art: art._embedded.artworks.map((art) => ({
+		art: art._embedded.artworks.map((art: any) => ({
 			id: art.id,
 			title: art.display ?? `${art.title} (${art.date})`,
 			description: art.medium,

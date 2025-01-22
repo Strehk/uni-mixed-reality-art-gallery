@@ -7,7 +7,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let artwork = $derived(data.artwork);
+	let artwork = $derived(data.artwork) as any;
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
@@ -28,9 +28,13 @@
 	</div>
 </div>
 
-<div class="min-h-96 w-full h-full">
+<div class="h-full min-h-96 w-full">
 	<Canvas>
-		<ArtScene paintingTextureHref={artwork._links.thumbnail?.href} width={artwork.dimensions?.cm.width / 100} height={artwork.dimensions?.cm.height / 100} />
+		<ArtScene
+			paintingTextureHref={artwork._links.thumbnail?.href}
+			width={artwork.dimensions?.cm.width / 100}
+			height={artwork.dimensions?.cm.height / 100}
+		/>
 	</Canvas>
 	<ARButton />
 </div>
