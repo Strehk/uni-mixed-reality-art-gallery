@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { redirect } from '@sveltejs/kit';
-	import type { PageData, PageProps } from './$types';
+	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
 
 	let { data }: { data: PageData } = $props();
 
 	let btnLoading = $state(false);
+
+	let searchTerm = $state(data.searchTerm);
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
@@ -24,6 +25,7 @@
 			type="text"
 			placeholder="Search"
 			class="input input-lg join-item input-bordered input-primary w-full"
+			bind:value={searchTerm}
 		/>
 		<button class="btn btn-primary join-item btn-lg" type="submit">
 			{#if btnLoading}
@@ -35,7 +37,7 @@
 	</form>
 	<div class="grid grid-cols-3 gap-6">
 		{#each data.art as art}
-			<a class="card border-white" href={`gallery/${art.id}`}>
+			<a class="card border-white" href={`/${art.id}`}>
 				<figure>
 					<img
 						src={art.thumbnailHref}
@@ -52,7 +54,6 @@
 	</div>
 </div>
 
-
-<pre class="w-full">
+<!-- <pre class="w-full">
     {JSON.stringify(data, null, 2)}
-</pre>
+</pre> -->

@@ -8,6 +8,11 @@ export default async function artsyFetch<T>(path: string, token: string): Promis
 			'Content-Type': 'application/json'
 		}
 	});
-	const data = await res.json();
-	return data;
+	try {
+		const data = await res.json();
+		return data;
+	} catch (error) {
+		console.error(error);
+		return new Promise((resolve, reject) => reject(error));
+	}
 }

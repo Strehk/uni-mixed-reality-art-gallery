@@ -7,7 +7,7 @@ export const load: PageServerLoad = async (event) => {
 
 	const artworkId = event.params.artworkId;
 
-	let artwork = await artsyFetch(`artworks/${artworkId}`, artsyApiToken);
+	let artwork = (await artsyFetch(`artworks/${artworkId}`, artsyApiToken)) as any;
 
 	if (['other_error'].includes(artwork.type)) {
 		error(500, artwork.message);

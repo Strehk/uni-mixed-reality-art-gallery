@@ -8,6 +8,24 @@
 	let { data }: { data: PageData } = $props();
 
 	let artwork = $derived(data.artwork) as any;
+
+	type ImageVersion =
+		| 'large'
+		| 'larger'
+		| 'medium'
+		| 'medium_rectangle'
+		| 'normalized'
+		| 'small'
+		| 'square'
+		| 'tall';
+
+	const getImageVersion = (availableVersions: ImageVersion[]) => {
+		if (availableVersions.includes('larger')) return 'larger';
+		if (availableVersions.includes('large')) return 'large';
+		if (availableVersions.includes('medium')) return 'medium';
+		if (availableVersions.includes('small')) return 'small';
+		return 'normalized';
+	};
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
@@ -31,7 +49,10 @@
 <div class="h-full min-h-96 w-full">
 	<Canvas>
 		<ArtScene
-			paintingTextureHref={artwork._links.thumbnail?.href}
+			paintingTextureHref={artwork._links.image?.href.replace(
+				'{image_version}',
+				getImageVersion(artwork.image_versions)
+			)}
 			width={artwork.dimensions?.cm.width / 100}
 			height={artwork.dimensions?.cm.height / 100}
 		/>
@@ -39,6 +60,6 @@
 	<XRButton mode="immersive-ar" styled={true} class="btn" />
 </div>
 
-<!-- <pre class="w-full">
+<pre class="w-full">
     {JSON.stringify(data, null, 2)}
-</pre> -->
+</pre>

@@ -1,4 +1,4 @@
-import type { LayoutServerLoad } from './$types';
+import type { LayoutServerLoad } from '../gallery/$types';
 import { env } from '$env/dynamic/private';
 // @ts-expect-error No Typescript support
 import artsyXapp from '@artsy/xapp';
