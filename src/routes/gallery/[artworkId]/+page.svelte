@@ -28,10 +28,12 @@
 	</div>
 </div>
 
-<Canvas>
-	<ArtScene />
-</Canvas>
-<ARButton />
+<div class="min-h-96 w-full h-full">
+	<Canvas>
+		<ArtScene />
+	</Canvas>
+	<ARButton />
+</div>
 
 <!-- <pre class="w-full">
     {JSON.stringify(data, null, 2)}

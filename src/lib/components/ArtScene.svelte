@@ -1,31 +1,21 @@
-<!-- <script lang="ts">
-    import { T } from '@threlte/core'
-    import { XR } from '@threlte/xr'
-  </script>
-  <XR>
-    <T.Text position={[0, 1.6, -1]} text="I have entered another realm!" />
-  </XR>
-  <T.AmbientLight />
-  <T.DirectionalLight />
-  <T.PerspectiveCamera
-    makeDefault
-    position={[0, 1.8, 1]}
-    oncreate={(ref) => ref.lookAt(0, 1.8, 0)}
-  />
-  
-  <T.Mesh position.y={-50}>
-    <T.CylinderGeometry args={[2, 2, 100]} />
-    <T.MeshStandardMaterial color="white" />
-  </T.Mesh> -->
-
 <script>
 	import { T } from '@threlte/core';
 	import { XR } from '@threlte/xr';
+	import { MeshStandardMaterial, PerspectiveCamera, RepeatWrapping } from 'three';
+	import { useTexture } from '@threlte/extras';
+	import { TextureLoader } from 'three';
+	import { useLoader } from '@threlte/core';
+	import Camera from './Camera.svelte';
+
+	const wallTexture = useTexture('/textures/plaster/plaster.jpg');
 </script>
 
+<T.AmbientLight position={[0, 10, 10]} />
 <XR>
-	<T.Mesh>
-		<T.BoxGeometry />
-		<T.MeshBasicMaterial />
-	</T.Mesh>
+	{#await wallTexture then map}
+		<T.Mesh position={[0, 0, -3]} rotation={[0, 0, 0]}>
+			<T.BoxGeometry args={[3, 3, 0.1]} />
+			<T.MeshStandardMaterial {map} />
+		</T.Mesh>
+	{/await}
 </XR>
