@@ -30,7 +30,7 @@
 
 <div class="min-h-96 w-full h-full">
 	<Canvas>
-		<ArtScene />
+		<ArtScene paintingTextureHref={artwork._links.thumbnail?.href} width={artwork.dimensions?.cm.width / 100} height={artwork.dimensions?.cm.height / 100} />
 	</Canvas>
 	<ARButton />
 </div>
