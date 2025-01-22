@@ -60,6 +60,6 @@
 	<XRButton mode="immersive-ar" styled={true} class="btn" />
 </div>
 
-<pre class="w-full">
+<!-- <pre class="w-full">
     {JSON.stringify(data, null, 2)}
-</pre>
+</pre> -->
