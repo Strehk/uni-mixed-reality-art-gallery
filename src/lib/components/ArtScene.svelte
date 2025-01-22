@@ -5,7 +5,6 @@
 	import { useTexture } from '@threlte/extras';
 	import { TextureLoader } from 'three';
 	import { useLoader } from '@threlte/core';
-	import Camera from './Camera.svelte';
 
 	const wallTexture = useTexture('/textures/plaster/plaster.jpg');
 </script>
