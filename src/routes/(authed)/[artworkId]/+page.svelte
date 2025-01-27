@@ -26,9 +26,15 @@
 		if (availableVersions.includes('small')) return 'small';
 		return 'normalized';
 	};
+
+	let vr = $state(true);
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
+	<div class="tabs-boxed tabs">
+		<button class="tab {vr && 'tab-active'}" on:click={() => (vr = true)}> VR </button>
+		<button class="tab {!vr && 'tab-active'}" on:click={() => (vr = false)}> AR </button>
+	</div>
 	<div class="relative p-10">
 		<img src={artwork._links?.thumbnail?.href} alt={artwork.title} class="h-80 object-cover" />
 		<div class="border-primary absolute bottom-0 left-10 right-10 border-t-2 text-center">
@@ -57,9 +63,5 @@
 			height={artwork.dimensions?.cm.height / 100}
 		/>
 	</Canvas>
-	<XRButton mode="immersive-ar" styled={true} class="btn" />
+	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" />
 </div>
-
-<!-- <pre class="w-full">
-    {JSON.stringify(data, null, 2)}
-</pre> -->
