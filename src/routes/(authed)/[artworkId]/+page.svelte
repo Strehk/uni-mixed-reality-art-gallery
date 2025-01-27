@@ -28,13 +28,11 @@
 	};
 
 	let vr = $state(true);
+
+	let XRForce = $state<'enter' | 'exit' | undefined>();
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
-	<div class="tabs-boxed tabs">
-		<button class="tab {vr && 'tab-active'}" on:click={() => (vr = true)}> VR </button>
-		<button class="tab {!vr && 'tab-active'}" on:click={() => (vr = false)}> AR </button>
-	</div>
 	<div class="relative p-10">
 		<img src={artwork._links?.thumbnail?.href} alt={artwork.title} class="h-80 object-cover" />
 		<div class="border-primary absolute bottom-0 left-10 right-10 border-t-2 text-center">
@@ -50,6 +48,10 @@
 		<h1 class="text-4xl font-extrabold">{artwork.title}</h1>
 		<p class="">{artwork.medium} ({artwork.date})</p>
 	</div>
+	<div class="tabs-boxed tabs">
+		<button class="tab {vr && 'tab-active'}" onclick={() => (vr = true)}> VR </button>
+		<button class="tab {!vr && 'tab-active'}" onclick={() => (vr = false)}> AR </button>
+	</div>
 </div>
 
 <div class="h-full min-h-96 w-full">
@@ -61,7 +63,8 @@
 			)}
 			width={artwork.dimensions?.cm.width / 100}
 			height={artwork.dimensions?.cm.height / 100}
+			exit={() => (XRForce = 'exit')}
 		/>
 	</Canvas>
-	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" />
+	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" force={XRForce} />
 </div>

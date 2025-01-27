@@ -9,18 +9,15 @@
 		paintingTextureHref: string;
 		width: number;
 		height: number;
+		exit: () => void;
 	}
 
-	let { paintingTextureHref, width, height }: Props = $props();
+	let { paintingTextureHref, width, height, exit }: Props = $props();
 
 	const { isPresenting } = useXR();
 
 	let wallHeight = $derived(calcOptimalPictureHeight(height) + height / 2 + 0.5);
 	let wallWidth = $derived(width + 1);
-
-	const handleExit = (_event: XRControllerEvent<'squeeze'>) => {
-		$isPresenting = false;
-	};
 </script>
 
 <T.AmbientLight position={[-10, 10, 5]} />
@@ -42,7 +39,7 @@
 			oncreate={(ref) => ref.lookAt(0, 1.5, -3)}
 		/>
 	{/snippet}
-	<Controller left onsqueeze={(e) => handleExit(e)}>
+	<Controller left onsqueeze={(_e) => exit()}>
 		{#snippet targetRay()}
 			<T.Text fontSize={0.05} Squeeze to Exit position.x={0.1} />
 		{/snippet}
@@ -55,5 +52,5 @@
 			{/if}
 		{/snippet}
 	</Controller>
-	<Controller right onsqueeze={(e) => handleExit(e)} />
+	<Controller right onsqueeze={(_e) => exit()} />
 </XR>
