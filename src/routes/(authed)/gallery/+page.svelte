@@ -35,7 +35,7 @@
 			{/if}
 		</button>
 	</form>
-	<div class="grid grid-cols-3 gap-6">
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 		{#each data.art as art}
 			<a class="card border-white" href={`/${art.id}`}>
 				<figure>
