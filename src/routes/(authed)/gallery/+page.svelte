@@ -53,7 +53,3 @@
 		{/each}
 	</div>
 </div>
-
-<!-- <pre class="w-full">
-    {JSON.stringify(data, null, 2)}
-</pre> -->

@@ -3,7 +3,7 @@ import { env } from '$env/dynamic/private';
 // @ts-expect-error No Typescript support
 import artsyXapp from '@artsy/xapp';
 
-export const load: LayoutServerLoad = async ({ params }) => {
+export const load: LayoutServerLoad = async ({}) => {
 	artsyXapp.init(
 		{
 			url: env.ARTSY_API_URL, // defaults to process.env.ARTSY_URL

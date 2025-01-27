@@ -48,9 +48,9 @@
 		{/snippet}
 		{#snippet pointerCursor()}
 			{#if isPresenting}
-				<T.Mesh position={[0, 0, -0.5]}>
-					<T.BoxGeometry args={[0.1, 0.1, 0.1]} />
-					<T.MeshStandardMaterial color="red" />
+				<T.Mesh rotation.x={Math.PI / 2} position.z={-1 / 2}>
+					<T.CylinderGeometry args={[0.02, 0.02, 1]} />
+					<T.MeshPhongMaterial color="red" />
 				</T.Mesh>
 			{/if}
 		{/snippet}
