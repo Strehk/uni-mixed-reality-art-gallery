@@ -18,7 +18,7 @@
 	let wallHeight = $derived(calcOptimalPictureHeight(height) + height / 2 + 0.5);
 	let wallWidth = $derived(width + 1);
 
-	const handleExit = (event: XRControllerEvent) => {
+	const handleExit = (_event: XRControllerEvent<'squeeze'>) => {
 		$isPresenting = false;
 	};
 </script>
@@ -42,6 +42,18 @@
 			oncreate={(ref) => ref.lookAt(0, 1.5, -3)}
 		/>
 	{/snippet}
-	<Controller left onsqueeze={handleExit()} />
-	<Controller right onsqueeze={handleExit()} />
+	<Controller left onsqueeze={(e) => handleExit(e)}>
+		{#snippet targetRay()}
+			<T.Text fontSize={0.05} Squeeze to Exit position.x={0.1} />
+		{/snippet}
+		{#snippet pointerCursor()}
+			{#if isPresenting}
+				<T.Mesh position={[0, 0, -0.5]}>
+					<T.BoxGeometry args={[0.1, 0.1, 0.1]} />
+					<T.MeshStandardMaterial color="red" />
+				</T.Mesh>
+			{/if}
+		{/snippet}
+	</Controller>
+	<Controller right onsqueeze={(e) => handleExit(e)} />
 </XR>
