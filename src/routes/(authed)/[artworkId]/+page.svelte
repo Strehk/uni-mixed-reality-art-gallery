@@ -61,6 +61,7 @@
 				'{image_version}',
 				getImageVersion(artwork.image_versions)
 			)}
+			{vr}
 			width={artwork.dimensions?.cm.width / 100}
 			height={artwork.dimensions?.cm.height / 100}
 			exit={() => (XRForce = 'exit')}

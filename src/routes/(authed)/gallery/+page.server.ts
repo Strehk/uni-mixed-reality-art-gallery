@@ -1,4 +1,5 @@
 import artsyFetch from '$lib/artsyFetch.svelte';
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 const SIZE = 50;
@@ -32,7 +33,7 @@ export const load: PageServerLoad = async (event) => {
 
 	return {
 		...commonParts,
-		art: art._embedded.artworks.map((art: any) => ({
+		art: art._embedded?.artworks?.map((art: any) => ({
 			id: art.id,
 			title: art.display ?? `${art.title} (${art.date})`,
 			description: art.medium,
