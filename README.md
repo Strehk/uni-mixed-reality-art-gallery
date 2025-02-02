@@ -4,6 +4,8 @@ A WebXR-based virtual art gallery that allows users to view full-size artwork in
 
 Try it out: [**Live Demo**](https://mr.strehk.eu)
 
+This project was created as part of a university course on Mixed Reality at the [Hochschule für Technik und Wirtschaft (HTW) Berlin](https://www.htw-berlin.de/).
+
 ## Project Goals
 
 - Create an accessible virtual art gallery experience
@@ -17,6 +19,16 @@ Try it out: [**Live Demo**](https://mr.strehk.eu)
 - Dynamic room sizing based on artwork dimensions
 - Optimal viewing distances and heights
 - Artwork information display (title and medium)
+
+## Impressions
+
+In the browser:
+![home.jpg](doc/home.png)
+![gallery.jpg](doc/gallery.png)
+![artwork.jpg](doc/artwork.png)
+
+And in VR:
+![demo.jpg](doc/demo.jpg)
 
 ## Technologies Used
 
