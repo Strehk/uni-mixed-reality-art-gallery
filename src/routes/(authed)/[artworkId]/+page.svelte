@@ -61,6 +61,8 @@
 				'{image_version}',
 				getImageVersion(artwork.image_versions)
 			)}
+			title={artwork.title}
+			medium={`${artwork.medium}\n${artwork.date}\n${artwork.dimensions?.cm.width} x ${artwork.dimensions?.cm.height} cm`}
 			{vr}
 			width={artwork.dimensions?.cm.width / 100}
 			height={artwork.dimensions?.cm.height / 100}
@@ -69,3 +71,5 @@
 	</Canvas>
 	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" force={XRForce} />
 </div>
+
+<pre>{JSON.stringify(artwork, null, 2)}</pre>
