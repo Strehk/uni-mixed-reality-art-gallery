@@ -33,6 +33,10 @@
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
+	<div class="tabs-boxed tabs">
+		<button class="tab {vr && 'tab-active'}" onclick={() => (vr = true)}> VR </button>
+		<button class="tab {!vr && 'tab-active'}" onclick={() => (vr = false)}> AR </button>
+	</div>
 	<div class="relative p-10">
 		<img src={artwork._links?.thumbnail?.href} alt={artwork.title} class="h-80 object-cover" />
 		<div class="border-primary absolute bottom-0 left-10 right-10 border-t-2 text-center">
@@ -47,10 +51,6 @@
 	<div class="flex flex-col items-center justify-center gap-2">
 		<h1 class="text-4xl font-extrabold">{artwork.title}</h1>
 		<p class="">{artwork.medium} ({artwork.date})</p>
-	</div>
-	<div class="tabs-boxed tabs">
-		<button class="tab {vr && 'tab-active'}" onclick={() => (vr = true)}> VR </button>
-		<button class="tab {!vr && 'tab-active'}" onclick={() => (vr = false)}> AR </button>
 	</div>
 </div>
 
@@ -71,5 +71,3 @@
 	</Canvas>
 	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" force={XRForce} />
 </div>
-
-<pre>{JSON.stringify(artwork, null, 2)}</pre>

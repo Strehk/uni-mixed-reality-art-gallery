@@ -36,7 +36,7 @@
 <T.AmbientLight position={[2, 10, 0]} castShadow />
 <T.SpotLight
 	position={[0, calcOptimalPictureHeight(height) + height + 1, -1.5]}
-	intensity={70}
+	intensity={40}
 	penumbra={0.5}
 	castShadow
 	target={spotlightTarget}
@@ -62,7 +62,7 @@
 	/>
 {/if}
 {#if medium}
-<Text
+	<Text
 		text={medium}
 		fontSize={0.02}
 		color="#000000"
@@ -129,7 +129,7 @@
 	{/snippet}
 	<Controller left onsqueeze={(_e) => exit()}>
 		{#snippet targetRay()}
-			<Text fontSize={0.05} text="Squeeze to Exit" position.x={0.1} />
+			<Text fontSize={0.02} text={'Squeeze\nto\nExit'} position.x={0.1} />
 		{/snippet}
 		{#snippet pointerCursor()}
 			{#if isPresenting}
