@@ -96,7 +96,7 @@ docker run -d \
   -e ARTSY_API_CLIENT_ID=replaceme \
   -e ARTSY_API_CLIENT_SECRET=replaceme \
   -p 3000:3000 \
-  ghcr.io/strehk/uni-mixed-reality-freestyle:nightly \
+  ghcr.io/strehk/uni-mixed-reality-art-gallery:latest \
 ```
 
 The equivalent `docker-compose.yml` file would look like this:
