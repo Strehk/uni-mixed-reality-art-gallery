@@ -67,3 +67,33 @@ Browse the gallery in your HMD's browser and select an artwork. Start the VR or 
 ## Known Issues
 
 The Artsy API is pretty limited in terms of public domain artworks, wich results in a limited selection of artworks to display. On search, the gallery is currently showing all artworks in the database nontheless, which makes it frustrating to find artworks that are actually available to view. Best experience is to not search at all and just browse the default selection.
+
+## Deployment with Docker
+
+A Production-ready Image is available on GHCR:
+```bash
+docker pull ghcr.io/strehk/uni-mixed-reality-freestyle:latest
+```
+
+To run the image, you need to provide the Artsy API credentilas as environment variables as well as open the port 3000:
+```bash
+docker run -d \
+  -e ARTSY_API_URL=https://api.artsy.net \
+  -e ARTSY_API_CLIENT_ID=replaceme \
+  -e ARTSY_API_CLIENT_SECRET=replaceme \
+  -p 3000:3000 \
+  ghcr.io/strehk/uni-mixed-reality-freestyle:nightly \
+```
+
+The equivalent `docker-compose.yml` file would look like this:
+```yaml
+services:
+  mixed-reality-freestyle:
+    image: ghcr.io/strehk/uni-mixed-reality-freestyle:latest
+    environment:
+      - ARTSY_API_URL=https://api.artsy.net
+      - ARTSY_API_CLIENT_ID=replaceme
+      - ARTSY_API_CLIENT_SECRET=replaceme
+    ports:
+      - 3000:3000
+```
