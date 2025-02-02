@@ -80,6 +80,8 @@ Browse the gallery in your HMD's browser and select an artwork. Start the VR or 
 
 The Artsy API is pretty limited in terms of public domain artworks, wich results in a limited selection of artworks to display. On search, the gallery is currently showing all artworks in the database nontheless, which makes it frustrating to find artworks that are actually available to view. Best experience is to not search at all and just browse the default selection.
 
+Furthermore the XR-Button sometimes floats over other UI elements, which can be annoying.
+
 ## Deployment with Docker
 
 A Production-ready Image is available on GHCR:
@@ -101,7 +103,7 @@ The equivalent `docker-compose.yml` file would look like this:
 ```yaml
 services:
   mixed-reality-freestyle:
-    image: ghcr.io/strehk/uni-mixed-reality-freestyle:latest
+    image: ghcr.io/strehk/uni-mixed-reality-art-gallery:latest
     environment:
       - ARTSY_API_URL=https://api.artsy.net
       - ARTSY_API_CLIENT_ID=replaceme
