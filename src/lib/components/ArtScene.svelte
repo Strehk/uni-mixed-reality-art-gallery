@@ -134,8 +134,8 @@
 	</Controller>
 	<Controller left>
 		{#snippet targetRay()}
-			<Text fontSize={0.03} text={title} position.x={0.05} position.y={0.02} />
-			<Text fontSize={0.02} text={medium} position.x={0.05} />
+			<Text fontSize={0.02} text={title} position.x={0.05} position.y={0.03} />
+			<Text fontSize={0.01} text={medium} position.x={0.05} />
 		{/snippet}
 	</Controller>
 </XR>

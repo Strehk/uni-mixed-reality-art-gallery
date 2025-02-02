@@ -1,38 +1,69 @@
-# sv
+# Virtual Art Gallery VR
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A WebXR-based virtual art gallery that allows users to view full-size artwork in virtual or augmented reality.
 
-## Creating a project
+Try it out: [**Live Demo**](https://mr.strehk.eu)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Project Goals
 
+- Create an accessible virtual art gallery experience
+- Support both VR and AR viewing modes
+- Present artwork with proper size, lighting and spatial context
+- Provide artwork information in an immersive way
+
+## Features
+
+- Immersive 3D gallery environment
+- Dynamic room sizing based on artwork dimensions
+- Optimal viewing distances and heights
+- Artwork information display (title and medium)
+
+## Technologies Used
+
+### Core Framework
+- [**Svelte** and **SvelteKit**](https://svelte.dev/) - Feature rich Javascript/UI framework, with server-side rendering
+- **TypeScript** - Type-safe JavaScript
+
+### API Integration and Data Sources
+- [**Artsy API**](https://developers.artsy.net/) - Artwork and artist information
+
+### 3D and VR Libraries
+- [**threlte**](https://threlte.xyz/) – A [Three.js](https://threejs.org/)-Wrapper for Svelte applications
+  - **@threlte/core** - Svelte components for Three.js
+  - **@threlte/extras** - Additional Threlte utilities
+  - **@threlte/xr** - Effortless WebXR support for Threlte
+
+### Development Tools
+- **Vite** - Build tool and development server
+- **WebXR** - Web-based VR/AR experiences
+
+## Getting Started
+
+1. Install dependencies:
 ```bash
-# create a new project in the current directory
-npx sv create
+npm install
 
-# create a new project in my-app
-npx sv create my-app
+3. Create a `.env` file in the root directory with the following content:
+```bash
+ARTSY_API_URL=https://api.artsy.net
+ARTSY_API_CLIENT_ID=***YOUR_CLIENT_ID***
+ARTSY_API_CLIENT_SECRET=***YOUR_CLIENT_SECRET***
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+2. Start the development server:
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
-
+3. Build for production:
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Usage
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Browse the gallery in your HMD's browser and select an artwork. Start the VR or AR experience to view the artwork in full size.
+
+## Known Issues
+
+The Artsy API is pretty limited in terms of public domain artworks, wich results in a limited selection of artworks to display. On search, the gallery is currently showing all artworks in the database nontheless, which makes it frustrating to find artworks that are actually available to view. Best experience is to not search at all and just browse the default selection.
