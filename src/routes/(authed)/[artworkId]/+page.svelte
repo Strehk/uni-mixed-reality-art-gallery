@@ -28,8 +28,6 @@
 	};
 
 	let vr = $state(true);
-
-	let XRForce = $state<'enter' | 'exit' | undefined>();
 </script>
 
 <div class="flex w-full flex-col items-center justify-center gap-10 p-10">
@@ -66,8 +64,7 @@
 			{vr}
 			width={artwork.dimensions?.cm.width / 100}
 			height={artwork.dimensions?.cm.height / 100}
-			exit={() => (XRForce = 'exit')}
 		/>
 	</Canvas>
-	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" force={XRForce} />
+	<XRButton mode={vr ? 'immersive-vr' : 'immersive-ar'} class="btn" />
 </div>

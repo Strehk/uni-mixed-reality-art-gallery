@@ -12,12 +12,11 @@
 		width: number;
 		height: number;
 		vr: boolean;
-		exit: () => void;
 		title?: string;
 		medium?: string;
 	}
 
-	let { paintingTextureHref, width, height, exit, vr, title, medium }: Props = $props();
+	let { paintingTextureHref, width, height, vr, title, medium }: Props = $props();
 
 	const { isPresenting } = useXR();
 
@@ -119,6 +118,7 @@
 	</T.Mesh>
 {/if}
 
+<!-- XR-Stuff -->
 <XR>
 	{#snippet fallback()}
 		<T.PerspectiveCamera
@@ -127,18 +127,15 @@
 			oncreate={(ref) => ref.lookAt(0, calcOptimalPictureHeight(height), -3)}
 		/>
 	{/snippet}
-	<Controller left onsqueeze={(_e) => exit()}>
+	<Controller right>
 		{#snippet targetRay()}
-			<Text fontSize={0.02} text={'Squeeze\nto\nExit'} position.x={0.1} />
-		{/snippet}
-		{#snippet pointerCursor()}
-			{#if isPresenting}
-				<T.Mesh rotation.x={Math.PI / 2} position.z={-1 / 2}>
-					<T.CylinderGeometry args={[0.02, 0.02, 1]} />
-					<T.MeshPhongMaterial color="red" />
-				</T.Mesh>
-			{/if}
+			<Text fontSize={0.01} text={'Squeeze\nto\nExit'} position.x={0.05} />
 		{/snippet}
 	</Controller>
-	<Controller right onsqueeze={(_e) => exit()} />
+	<Controller left>
+		{#snippet targetRay()}
+			<Text fontSize={0.03} text={title} position.x={0.05} position.y={0.02} />
+			<Text fontSize={0.02} text={medium} position.x={0.05} />
+		{/snippet}
+	</Controller>
 </XR>
